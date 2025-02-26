@@ -29,7 +29,7 @@ router.get('/', async function(req, res) {
 
 router.post('/', async function(req, res) {
     try {
-        const validaciones = validarMedias(req);
+        const validaciones = validarMedia(req);
 
         if (validaciones.lenght > 0) {
             return res.status(400).send(validaciones);

@@ -31,7 +31,7 @@ router.post('/',
             tipo.nombre = req.body.nombre;
             tipo.fechaCreacion = new Date();
             tipo.fechaActualizacion = new Date();
-            tipotipo.descripcion = req.body.descripcion;
+            tipo.descripcion = req.body.descripcion;
 
             tipo = await tipo.save();
 
