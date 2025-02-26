@@ -39,4 +39,4 @@ const MediaSchema = Schema({
     }
 });
 
-module.exports = model('Media', MediaSchema);
+module.exports = model('Media', MediaSchema); 

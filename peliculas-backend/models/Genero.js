@@ -21,7 +21,7 @@ const GeneroSchema = Schema({
         required:true,
     },
     
-    decripcion: {
+    descripcion: {
         type: String,
         required:true,
     }
