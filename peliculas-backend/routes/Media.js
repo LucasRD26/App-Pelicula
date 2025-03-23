@@ -6,7 +6,7 @@ const router = Router();
 
 router.get('/', async function(req, res) {
     try {
-        const medias = await Medias.find().populate([
+        const medias = await Media.find().populate([
             {
                 path: 'genero', select: 'nombre estado descripcion'
             },
@@ -103,11 +103,11 @@ router.put('/:mediaId', async function(req,res) {
     }
 });
 
-router.get('/:inventarioId', async function(req, res) {
+router.get('/:mediaId', async function(req, res) {
     try {
-        const media = await Media.findById(req.params.inventarioId);
-        if (!inventario) {
-            return res.status(404).send('Inventario no existe');
+        const media = await Media.findById(req.params.mediaId);
+        if (!media) {
+            return res.status(404).send('media no existe');
         }
         res.send(inventario);
     } catch (error) {
