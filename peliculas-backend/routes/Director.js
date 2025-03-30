@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { validationResult, check } = require('express-validator');
 const Director = require('../models/Director');
+const mongoose = require('mongoose');
 
 const router = Router();
 
@@ -50,9 +51,13 @@ router.put('/:directorId',
     ],
     async function(req, res) {
         try {
-            let director =  await director.findById(req.params.directorId);
+            if (!mongoose.Types.ObjectId.isValid(req.params.directorId)) {
+                return res.status(400).send('ID no válido');
+            }
+            const directorId = mongoose.Types.ObjectId(req.params.directorId);
+            let director = await Director.findById(directorId);
             if (!director) {
-                return res.send('director no existe');
+                return res.status(404).send('Director no existe');
             }
 
             const errors = validationResult(req);
@@ -69,9 +74,11 @@ router.put('/:directorId',
             res.send(director);
         } catch (error) {
             console.log(error);
-            res.send('Ocurrio un error');
+            res.status(500).send('Ocurrió un error');
         }
     }
 );
+
+
 
 module.exports = router;
