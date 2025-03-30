@@ -109,7 +109,7 @@ router.get('/:mediaId', async function(req, res) {
         if (!media) {
             return res.status(404).send('media no existe');
         }
-        res.send(inventario);
+        res.send(media);
     } catch (error) {
         console.log(error);
         res.status(500).send('Ocurrio un error al consultar Media')

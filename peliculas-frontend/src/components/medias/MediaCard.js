@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export const MediaCard = (props) => {
 
@@ -19,7 +20,9 @@ export const MediaCard = (props) => {
                 <p className="card-text">{`genero: ${media.genero.nombre}`}</p>
                 <p className="card-text">{`director: ${media.director.nombre}`}</p>
                 <p className="card-text">{`Tipo: ${media.tipo.nombre}`}</p>
-
+                <p className="card-text">
+                  <Link to = {`medias/edit/${media._id}`}>Ver mas</Link>
+                </p>
             </div>
         </div>
     </div>
